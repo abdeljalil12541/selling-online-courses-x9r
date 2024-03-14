@@ -29,3 +29,7 @@ urlpatterns = [
     path('my-contact-history/', my_contact_history, name='my_contact_history'),
     path('privacy-policy/', privacy_policy, name='privacy_policy'),
 ]
+urlpatterns += static(MEDIA_URL, document_root=MEDIA_ROOT)
+
+
+urlpatterns += static(STATIC_URL, document_root=settings.STATIC_ROOT)
