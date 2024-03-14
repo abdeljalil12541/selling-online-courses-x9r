@@ -1,26 +1,13 @@
 {
-  "builds": [
-    {
-      "src": "build_files.sh",
-      "use": "@vercel/static-build",
-      "config": {
-        "distDir": "staticfiles_build"
-      }
-    },
-    {
-      "src": "/sellCoursesOnline/wsgi.py",
-      "use": "@vercel/python",
+  "builds": [{
+      "src": "vercel_app/wsgi.py",
+      "use": "@ardnt/vercel-python-wsgi",
       "config": { "maxLambdaSize": "15mb" }
-    }
-  ],
+  }],
   "routes": [
-    {
-      "src": "/(.*)",
-      "dest": "sellCoursesOnline/wsgi.py"
-    },
-    {
-      "src": "/static/(.*)",
-      "dest": "/static/$1"
-    }
+      {
+          "src": "/(.*)",
+          "dest": "sellOnlineCourses/wsgi.py"
+      }
   ]
 }
