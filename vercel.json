@@ -2,7 +2,7 @@
   "name": "sell-courses-online",
   "builds": [
     {
-      "src": "sellCoursesOnline",
+      "src": "sellCoursesOnline/courses",
       "use": "@vercel/static-build"
     }
   ],
