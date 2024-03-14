@@ -1,11 +1,5 @@
 {
   "version": 2,
-  "builds": [
-    {
-      "src": "sellCoursesOnline/wsgi.py",
-      "use": "@vercel/python"
-    }
-  ],
   "routes": [
     { "handle": "filesystem" },
     { "src": "/(.*)", "dest": "sellCoursesOnline/wsgi.py" }
