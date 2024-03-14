@@ -1,16 +1,18 @@
 {
-  "name": "sell-courses-online",
+  "version": 2,
   "builds": [
     {
-      "src": "sellCoursesOnline",
-      "use": "@vercel/static-build"
+      "src": "sellCoursesOnline/wsgi.py",
+      "use": "@vercel/python"
     }
   ],
   "routes": [
-    { "src": "/", "dest": "sellCoursesOnline" }
+    { "handle": "filesystem" },
+    { "src": "/(.*)", "dest": "sellCoursesOnline/wsgi.py" }
   ],
   "env": {
     "DJANGO_SETTINGS_MODULE": "sellCoursesOnline.settings",
+    "PYTHONUNBUFFERED": "true",
     "VERCEL": "1"
   }
 }
