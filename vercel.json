@@ -2,11 +2,7 @@
   "routes": [
     {
       "src": "/(.*)",
-      "dest": "sellCoursesOnline/manage.py"
-    },
-    {
-      "src": "/static/(.*)",
-      "dest": "sellCoursesOnline/static/$1"
+      "dest": "/sellCoursesOnline/wsgi.py"
     }
   ]
 }

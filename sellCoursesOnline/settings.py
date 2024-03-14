@@ -81,7 +81,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'sellCoursesOnline.wsgi.application'
+WSGI_APPLICATION = 'sellCoursesOnline.wsgi.app'
 
 
 # Database
