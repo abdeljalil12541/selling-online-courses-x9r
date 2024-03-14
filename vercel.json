@@ -1,12 +1,12 @@
 {
-  "rewrites": [
+  "routes": [
     {
-      "source": "/(.*)",
-      "destination": "sellCoursesOnline.wsgi"
+      "src": "/(.*)",
+      "dest": "sellCoursesOnline.wsgi"
     },
     {
-      "source": "/static/(.*)",
-      "destination": "sellCoursesOnline/static/$1"
+      "src": "/static/(.*)",
+      "dest": "sellCoursesOnline/static/$1"
     }
   ]
 }
