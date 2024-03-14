@@ -89,14 +89,15 @@ WSGI_APPLICATION = 'sellCoursesOnline.wsgi.app'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'railway',
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'postgres',
         'USER': 'postgres',
-        'PASSWORD': 'NiwzzkOzBAZolQsPmcogvzwFtYXMnpbT',
-        'HOST': 'monorail.proxy.rlwy.net',
-        'PORT': '14362',
+        'PASSWORD': 'admin',
+        'HOST': '127.0.0.1',  # Replace with the hostname or IP address of your PostgreSQL server
+        'PORT': '5432',  # This is optional if your PostgreSQL server is running on the default port
     }
 }
+
 
 
 # Password validation
