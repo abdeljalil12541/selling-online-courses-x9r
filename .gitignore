@@ -1,1 +1,19 @@
+# Ignore build artifacts
+build/
+dist/
+*.exe
 
+# Ignore IDE/editor files
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# Ignore sensitive data
+config/secrets.yml
+.env
+
+# Ignore compiled code
+*.class
+*.jar
+*.dll
