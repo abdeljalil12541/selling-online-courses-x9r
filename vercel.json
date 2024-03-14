@@ -1,3 +1,19 @@
 {
-  "rewrites": [{ "source": "/(.*)", "destination": "/api" }]
+  "name": "sell-courses-online",
+  "builds": [
+      {
+          "src": ".",
+          "use": "@vercel/static-build"
+      }
+  ],
+  "routes": [
+      {
+          "src": "/(.*)",
+          "dest": "sellCoursesOnline/manage.py"
+      }
+  ],
+  "env": {
+      "DJANGO_SETTINGS_MODULE": "sellCoursesOnline.settings",
+      "VERCEL": "1"
+  }
 }
