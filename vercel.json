@@ -1,15 +1,28 @@
 {
-  "name": "sell-courses-online",
   "builds": [
     {
-      "src": "sellCoursesOnline/courses"
+      "src": "build_files.sh",
+      "use": "@vercel/static-build",
+      "config": {
+        "distDir": "staticfiles_build"
+      }
+    },
+    {
+      "src": "sellCoursesOnline/wsgi.py",
+      "use": "@vercel/python",
+      "config": {
+        "maxLambdaSize": "15mb"
+      }
     }
   ],
   "routes": [
-    { "src": "/(.*)", "dest": "sellCoursesOnline" }
-  ],
-  "env": {
-    "DJANGO_SETTINGS_MODULE": "sellCoursesOnline.settings",
-    "VERCEL": "1"
-  }
+    {
+      "src": "/(.*)",
+      "dest": "sellCoursesOnline/wsgi.py"
+    },
+    {
+      "src": "/static/(.*)",
+      "dest": "/static/$1"
+    }
+  ]
 }
