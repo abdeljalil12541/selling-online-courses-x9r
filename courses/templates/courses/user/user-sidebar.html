@@ -1,0 +1,17 @@
+<div class="list-group">
+    <a href="/dashboard/" class="list-group-item {% if request.path == '/dashboard/' %}active{% endif %}">Dashboard</a>
+    <a href="/update-profile/" class="list-group-item {% if request.path == '/update-profile/' %}active{% endif %}">Update Profile</a>
+    <a href="/password-change/" class="list-group-item {% if request.path == '/password-change/' %}active{% endif %}">Password Change</a>
+    <a href="/user-courses-dash/" class="list-group-item {% if request.path == '/user-courses-dash/' %}active{% endif %}">Enrolled Courses</a>
+    <a href="/my-orders/" class="list-group-item {% if request.path == '/my-orders/' %}active{% endif %}">Orders</a>
+    <a href="/my-contact-history/" class="list-group-item {% if request.path == '/my-contact-history/' %}active{% endif %}">Contact History</a>
+    <a href="/privacy-policy/" class="list-group-item {% if request.path == '/privacy-policy/' %}active{% endif %}">Privacy Policy</a>
+
+    <a href="/logout" class="text-danger list-group-item">Logout</a>
+</div>
+
+<style>
+    .active{
+        background-color: #3075BA !important;
+    }
+</style>

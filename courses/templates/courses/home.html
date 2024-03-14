@@ -1,0 +1,71 @@
+{% extends "courses/base.html" %}
+{% load course_custom_tags %}
+{% block content %}
+{% include "courses/toast.html" %}
+<div class="row mt-5 mb-3" id="filteredProducts">
+  {% include "courses/course_item.html" %}
+</div>
+<div class="text-center">
+  <button class="text-dark" id="loadMore" data-total="{{total_data}}" data-limit="4"><i style="font-size:24px; cursor: pointer;" class="fa fa-refresh ref1  load-more-icon"></i></button>
+</div>
+
+
+<style>
+  .price{
+    font-size: 18px;
+  }
+  .faster-spin {
+    animation-duration: 0.5s; /* Adjust the duration as needed */
+  }
+  #loadMore{
+    border: none;
+    background: none;
+  }
+</style>
+
+<script>
+  $(document).ready(function(){
+    $("#loadMore").click(function(){
+      var button = $(this); // Reference to the button element
+      button.attr('disabled', true); // Disable the button
+
+      _currentProducts = $(".course-box").length;
+      _limit = $(this).attr('data-limit');
+      _total = $(this).attr('data-total');
+
+      // Start Ajax
+      $.ajax({
+        url: '/load-more-data',
+        data: {
+          'limit': _limit,
+          'offset': _currentProducts
+        },
+        dataType: 'json',
+        beforeSend:function(){
+          $(".load-more-icon").addClass('fa-spin faster-spin');
+        },
+        success: function(response){
+          setTimeout(function(){
+            $("#filteredProducts").append(response.data);
+            $(".load-more-icon").removeClass('fa-spin');
+          
+            var _totalShowing = $(".course-box").length;
+            if(_totalShowing == _total){
+              button.remove(); // Remove the button if all items are loaded
+            } else {
+              button.attr('disabled', false); // Enable the button
+            }
+          }, 400);
+        },
+        error: function(xhr, status, error){
+          console.error(error);
+          button.attr('disabled', false); // Enable the button in case of error
+        }
+      });
+      // End
+    });
+  });
+</script>
+
+
+{% endblock content %}

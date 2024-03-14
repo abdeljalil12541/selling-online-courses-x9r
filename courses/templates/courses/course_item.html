@@ -1,0 +1,33 @@
+{% load course_custom_tags %}
+
+{% for course in courses %}
+<div class="col-3 mb-3 course-box">
+    <div class="card shadow-sm">
+      <div class="card-body">
+        <div><img style="overflow: hidden; width: 100%; height: 150px;" src="{{course.thumbnail.url}}" alt="{{course.name}}"></div>
+        <h5 class="pt-2">{{course.name}}</h5>
+        <span class="pb-5">Save {{course.discount}}%</span>
+        <div class="m-0 p-0 card-text price">
+
+          <del>{{course.price|rupee}}</del>
+          &nbsp;
+          <span style="font-weight: 500;">{% call_sellprice course.price course.discount as value %} {{value|rupee}}</span>
+        </div>
+        <div class="d-flex float-end justify-content-between align-items-center">
+          <small class="text-muted">{{course.date}}</small>
+        </div>
+      </div>
+      <div class="card-footer">
+        {% is_enrolled request course as enrolled %}
+        <div class="row col-12 d-flex justify-content-between" style="padding-bottom: 2px;">
+          {% if enrolled %}
+          <a type="button" href="/course/{{course.slug}}/?video_id={{course.video_set.first.video_id}}&lecture={{course.video_set.first.serial_number}}" style="margin-left: 20px;" class="enrollBtn col btn btn-sm btn-success">Start Course</a>
+          {% else %}
+          <a type="button" href="/checkout/{{course.slug}}" style="margin-left: 20px;" class="enrollBtn col btn btn-sm btn-success col-5 float-left">Enroll Now</a>
+          <a type="button" href="/course/{{course.slug}}/?video_id={{course.video_set.first.video_id}}&lecture={{course.video_set.first.serial_number}}" class="col btn btn-sm btn-primary col-5 float-end">Show More</a>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+</div>
+{% endfor %}

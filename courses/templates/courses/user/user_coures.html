@@ -1,0 +1,39 @@
+{% extends "courses/base.html" %}
+{% load static %}
+{% load course_custom_tags %}
+{% block content %}
+
+<main class="container my-4">
+	<!-- Featured Products -->
+	<h3 class="my-4 border-bottom pb-1">Dashboard</h3>
+	<div class="row">
+        <div class="col-md-3">
+            {% include 'courses/user/user-sidebar.html' %}
+        </div>
+        <div class="col-md-9 border rounded">
+            <h3 class="mb-4 border-bottom pb-1 text-center" style="color: #3075BA;">Enrolled Courses</h3>
+            <table class="table table-bordered" style="margin-top: 12px;">
+                <thead>
+                  <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Course</th>
+                    <th scope="col">Videos</th>
+                    <th scope="col">Price</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {% for user_course in user_courses %}
+                    <tr>
+                        <th scope="row">{{user_course.pk}}</th>
+                        <td>{{user_course.course}}</td>
+                        <td>{{user_course.course.course_length}}</td>
+                        <td>{% call_sellprice user_course.course.price user_course.course.discount as value %} {{value|rupee}}</td>
+                    </tr>
+                  {% endfor %}
+                </tbody>
+              </table>
+            </div>
+	</div>
+</main>
+
+{% endblock content %}

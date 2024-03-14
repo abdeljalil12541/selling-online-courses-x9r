@@ -1,0 +1,132 @@
+{% extends "courses/base.html" %}
+{% load course_custom_tags %}
+{% load static %}
+{% block content %}
+    <style>
+      body {
+        text-align: center;
+      }
+        h1 {
+          color: #88B04B;
+          font-family: "Nunito Sans", "Helvetica Neue", sans-serif;
+          font-size: 40px;
+          margin-bottom: 10px;
+        }
+        p {
+          font-family: "Nunito Sans", "Helvetica Neue", sans-serif;
+          font-size:20px;
+          margin: 0;
+        }
+      .checkmark{
+        font-size: 80px;
+        line-height: 200px;
+        margin-left:-15px;
+      }
+      .card {
+        background: white;
+        padding: 60px;
+        border-radius: 4px;
+        box-shadow: 0 2px 3px #C8D0D8;
+        display: inline-block;
+        margin: 0 auto;
+      }
+    </style>
+
+
+    
+<div class="container" style="margin-top: 30px;">
+  <center><i class="fas fa-check-circle text-success" style="font-size: 50px;margin-bottom: 10px;color: #28A745;"></i></center>
+  <h2 class="text-center">Payment Successful</h2>
+<br>
+<div class="text-center" style="margin-top: -10px;">
+  <a href="/" class="btn btn-success">Enroll more</a>
+</div>
+</div>
+
+<div class="container" style="margin: 0 auto;width: 50%;padding: 30px 50px;background: #f1f1f1;margin-top: 40px;margin-bottom: 30px;">
+  <div class="row invoice row-printable">
+      <div class="col-md-12">
+          <!-- col-lg-12 start here -->
+          <div class="panel panel-default plain" id="dash_0">
+              <!-- Start .panel -->
+              <div class="panel-body p30">
+                  <div class="row">
+                      <!-- Start .row -->
+                      <div class="col-lg-6">
+                          <!-- col-lg-6 start here -->
+                          <div class="invoice-logo"><img src="{{payment.course.thumbnail.url}}" alt="Invoice logo" style="max-height: 120px; border-radius: 5px;"></div>
+                      </div>
+                      <!-- col-lg-6 end here -->
+                      <div class="col-lg-6">
+                          <!-- col-lg-6 start here -->
+                          <div class="invoice-from">
+                              <ul class="list-unstyled text-right">
+                                  <li class="pb-2 mt-3"><strong class="h3">Invoiced To</strong></li>
+                                  <li class="h5 text-dark">"{{payment.user}}"</li>
+                              </ul>
+                          </div>
+                      </div>
+                      <!-- col-lg-6 end here -->
+                      <div class="col-lg-12">
+                          <!-- col-lg-12 start here -->
+                          <div class="invoice-details mt-3">
+                              <div class="well">
+                                  <ul class="list-unstyled mb0">
+                                      <li><strong>Order ID</strong> #{{payment_id}}</li>
+                                      <li><strong>Payment ID</strong> #{{payment.order_id}}</li>
+                                      <li><strong>Order Date:</strong> {{payment.date}}</li>
+                                      {% if payment.status %}
+                                      <li><strong>Status:</strong> PAID</li>
+                                      {% else %}
+                                      <li><strong>Status:</strong> UNPAID</li>
+                                      {% endif %}
+                                  </ul>
+                              </div>
+                          </div>
+                         
+                          <div class="invoice-items">
+                              <div class="table-responsive" style="overflow: hidden; outline: none;" tabindex="0">
+                                  <table class="table table-bordered">
+                                      <tbody>
+                                          <tr>
+                                              <th>Course</th>
+                                              <td>{{payment.course.name}}</td>
+                                          </tr>
+                                          <tr>
+                                              <th>Description</th>
+                                              <td class="text-center">{{payment.course.description}}</td>
+                                          </tr>
+                                      </tbody>
+                                      <tfoot>
+                                          <tr>
+                                              <th class="text-right">Price:</th>
+                                              <th class="text-center">{{payment.course.price|rupee}}</th>
+                                          </tr>
+                                          <tr>
+                                              <th class="text-right">Discount:</th>
+                                              <th class="text-center">{{payment.course.discount}}%</th>
+                                          </tr>
+                                          
+                                          <tr>
+                                              <th class="text-right">Total:</th>
+                                              <th class="text-center">{% call_sellprice payment.course.price payment.course.discount as value %} {{value|rupee}}</th>
+                                          </tr>
+                                      </tfoot>
+                                  </table>
+                              </div>
+                          </div>
+                          <div class="invoice-footer mt25">
+                              <p class="text-center">Thank you for enrolling in our course!</p>
+                          </div>
+                      </div>
+                      <!-- col-lg-12 end here -->
+                  </div>
+                  <!-- End .row -->
+              </div>
+          </div>
+          <!-- End .panel -->
+      </div>
+      <!-- col-lg-12 end here -->
+  </div>
+  </div>
+{% endblock content %}

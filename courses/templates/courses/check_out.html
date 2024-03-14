@@ -1,0 +1,61 @@
+{% extends "courses/base.html" %}
+{% load course_custom_tags %}
+{% block content %}
+{% include "courses/toast.html" %}
+
+<div class="container h-100" style="margin-top: 42px;">
+  <div class="row d-flex justify-content-center align-items-center h-100">
+    <div class="col-lg-12 col-xl-11">
+      <div class="card text-black" style="border-radius: 25px;">
+        <div class="card-body">
+          <div class="row">
+            <!-- First column with class "aa" -->
+            <div class="col-md-6">
+              <div class="card shadow-sm">
+                <div class="card-body">
+                  <div><img style="overflow: hidden; width: 100%; height: 250px;" src="{{course.thumbnail.url}}" alt="{{course.name}}"></div>
+                  <h5 class="pt-2">{{course.name}}</h5>
+                  <span class="pb-5">Save {{course.discount}}%</span>
+                  <div class="m-0 p-0 card-text price">
+                    <del>{{course.price|rupee}}</del>
+                    &nbsp;
+                    <span style="font-weight: 500;">{% call_sellprice course.price course.discount as value %} {{value|rupee}}</span>
+                  </div>
+                  <div class="d-flex float-end justify-content-between align-items-center">
+                    <small class="text-muted">{{course.date}}</small>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Second column with class "bb" -->
+            <div class="col-md-6" style="height: 394px;">
+              <div class="card shadow-sm h-100 d-flex flex-column" style="overflow: hidden;">
+                <div class="card-body flex-grow-1" >
+                  <div>
+                    <p class="display-5">{{course.name}}</p>
+                    <hr>
+                    <p class="display-6">Payable Amount : <b>{{value|rupee}}</b></p>
+                    <p class="display-6">Total Videos : <b>{{total_videos}}</b></p>
+                    <p><span>Course Desciption: {{course.description}}</span></p>
+                    <a style="border-bottom-right-radius: 20px; margin-top: 40px;" class="btn btn-success py-2 border" target="_blank" href="{% url "checkout_session" course.slug %}">Continue to Payment</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock content %}
+
+
+{% if error is not None %}
+  <script>
+    window.onload() = ()=>{
+      alert("{{error}}")
+    }
+  </script>
+{% endif %}

@@ -1,0 +1,41 @@
+{% extends "courses/base.html" %}
+{% load static %}
+{% block content %}
+{% include "courses/toast.html" %}
+
+
+<main class="container my-4">
+	<!-- Featured Products -->
+	<h3 class="my-4 border-bottom pb-1">Dashboard</h3>
+	<div class="row">
+        <div class="col-md-3">
+            {% include 'courses/user/user-sidebar.html' %}
+        </div>
+        <div class="col-md-9 border rounded">
+            <div class="col-12">
+                <h3 class="mb-3 border-bottom pb-1 text-center" style="color:#3075BA;">Dashboard</h3>
+                
+                <div class="container border rounded mb-2 pb-2 col-11" width="100%" border="0" align="center" cellpadding="0" cellspacing="0" style=" background:#fff; border-radius:3px; text-align:center;-webkit-box-shadow:0 1px 3px 0 rgba(0, 0, 0, 0.16), 0 1px 3px 0 rgba(0, 0, 0, 0.12);-moz-box-shadow:0 1px 3px 0 rgba(0, 0, 0, 0.16), 0 1px 3px 0 rgba(0, 0, 0, 0.12);box-shadow:0 1px 3px 0 rgba(0, 0, 0, 0.16), 0 1px 3px 0 rgba(0, 0, 0, 0.12)">
+                    <tr>
+                        <td>
+                            <tbody><tr>
+                                <td>
+                                    <p style="font-size:15px; color:#171f23de; margin:8px 0 0; line-height:24px;"><p style="font-weight: 500;">Welcome to the user dashboard! We hope you enjoy your experience on our website.</p></p>
+                                    <span style="display:inline-block; vertical-align:middle; margin:0px 0 18px; border-bottom:1px solid #cecece; width:100px;"></span>
+                                    <p style="color:rgba(23,31,35,.87); font-size:18px;line-height:20px; margin:0; font-weight: 500;">
+                                        <strong style="display: block;font-size: 13px; margin: 0 0 4px; color:rgba(23,31,35,.64); font-weight:normal;">Username</strong>{{user}}
+                                        <strong style="display: block; font-size: 13px; margin: 14px 0 4px 0; font-weight:normal; color:rgba(23,31,35,.64);">Email</strong>{{user.email}}                                    
+                                    </p>
+                                    
+                                    <a href="/update-profile/" style="background:#3075BA; margin-bottom: 10px; text-decoration:none !important; display:inline-block; font-weight:500; margin-top:24px; color:#fff;text-transform:uppercase; font-size:14px;padding:10px 12px;display:inline-block;border-radius:3px;">Update Profile</a>
+                                </td>
+                            </tr>
+                        </tbody>
+                      </td>
+                    </tr>
+                </div>
+        </div>
+	</div>
+</main>
+
+{% endblock content %}

@@ -1,0 +1,53 @@
+{% extends "courses/base.html" %}
+{% load static %}
+{% load course_custom_tags %}
+{% block content %}
+
+<main class="container my-4">
+	<!-- Featured Products -->
+	<h3 class="my-4 border-bottom pb-1">Dashboard</h3>
+	<div class="row">
+        <div class="col-md-3">
+            {% include 'courses/user/user-sidebar.html' %}
+        </div>
+        <div class="col-md-9 border rounded" style=" overflow: hidden; overflow-x: scroll;">
+            <h3 class="mb-4 border-bottom pb-1 text-center" style="color: #3075BA;;">My Orders</h3>
+            <hr>
+            <table class="table table-bordered" style="margin-top: 12px;">
+                <thead>
+                  <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Payment ID</th>
+                    <th scope="col">Order ID</th>
+                    <th scope="col">Course</th>
+                    <th scope="col">Date</th>
+                    <th scope="col">Status</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {% for order, payment_id in combined_data %}
+                      {% if order %}
+                          <tr>
+                              <th scope="row">{{ order.pk }}</th>
+                              <td>#{{ payment_id }}</td>
+                              <td>#{{ order.order_id }}</td>
+                              <td>{{ order.course }}</td>
+                              <td>{{ order.date }}</td>
+                              {% if order.status %}
+                              <td class="text-success">PAID</td>
+                              {% else %}
+                              <td class="text-danger">UNPAID</td>
+                              {% endif %}
+                          </tr>
+                      {% endif %}
+                  {% endfor %}
+
+
+
+                </tbody>
+              </table>
+            </div>
+	</div>
+</main>
+
+{% endblock content %}
