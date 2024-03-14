@@ -1,12 +1,5 @@
 {
-  "routes": [
-    {
-      "src": "/(.*)",
-      "dest": "sellCoursesOnline/manage.py"
-    },
-    {
-      "src": "/static/(.*)",
-      "dest": "/static/$1"
-    }
-  ]
+  "rewrites": [
+    {"src": "/(.*)", "destination": "/"}
+    ]
 }
