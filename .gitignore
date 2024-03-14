@@ -1,0 +1,22 @@
+<<<<<<< HEAD
+=======
+# Ignore build artifacts
+build/
+dist/
+*.exe
+
+# Ignore IDE/editor files
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# Ignore sensitive data
+config/secrets.yml
+.env
+
+# Ignore compiled code
+*.class
+*.jar
+*.dll
+>>>>>>> fcb84850e1ed6baafc33a208dd7a86cd2319385e
