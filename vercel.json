@@ -1,12 +1,15 @@
 {
-  "version": 2,
+  "name": "sell-courses-online",
+  "builds": [
+    {
+      "src": "sellCoursesOnline/courses"
+    }
+  ],
   "routes": [
-    { "handle": "filesystem" },
-    { "src": "/(.*)", "dest": "sellCoursesOnline/wsgi.py" }
+    { "src": "/(.*)", "dest": "sellCoursesOnline" }
   ],
   "env": {
     "DJANGO_SETTINGS_MODULE": "sellCoursesOnline.settings",
-    "PYTHONUNBUFFERED": "true",
     "VERCEL": "1"
   }
 }
