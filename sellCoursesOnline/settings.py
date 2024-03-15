@@ -24,7 +24,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-8!zy^yss_95hd$53eksgax&$ho!$0cppl#h907_!mv&6foh2z+'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_HOST_USER = 'sellingonlinecourses@gmail.com'  # Your Zoho email address
