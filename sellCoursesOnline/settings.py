@@ -34,7 +34,7 @@ EMAIL_USE_TLS = True
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_LOGGING = True
 
-ALLOWED_HOSTS = ['selling-online-courses-x9r-jz1l2w215-lorems-projects-01b748a1.vercel.app']
+ALLOWED_HOSTS = ['selling-online-courses-x9r-seven.vercel.app']
 
 
 # Application definition
